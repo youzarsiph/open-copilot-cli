@@ -1,0 +1,34 @@
+name: CI
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+
+      - name: Create venv
+        run: |
+          python -m venv .venv
+
+      - name: Install Dependencies
+        run: |
+          source .venv/bin/activate
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements.txt
+          python -m pip install poetry
+          python -m poetry build
+          python -m poetry install
+
+
+      - name: Run the app
+        run: |
+          python code_pilot_cli --help
