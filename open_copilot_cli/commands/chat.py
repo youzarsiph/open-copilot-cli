@@ -85,5 +85,14 @@ def chat(
             print(f"[bold red]Error[/bold red]: {error}")
             break
 
+    if not export:
+        export = typer.prompt(
+            "Do you want to save this chat?",
+            type=bool,
+            default=False,
+            show_default=True,
+            confirmation_prompt=True,
+        )
+
     if export:
         json.dump(messages, export, indent=2)
