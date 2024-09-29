@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "open-copilot-cli"
-version = "0.1.2"
+version = "0.1.3"
 description = "Your customizable assistant in your CLI"
 authors = ["Yousuf Abu Shanab <josephyousef249@gmail.com>"]
 license = "MIT"
